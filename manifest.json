@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Folderwise Bookmark Search",
+  "version": "1.0.0",
+  "description": "A standalone bookmark manager with folder-scoped search and folder-grouped results.",
+  "permissions": ["bookmarks", "storage", "clipboardWrite"],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Open Folderwise Bookmark Search"
+  }
+}

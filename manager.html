@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Folderwise Bookmark Search</title>
+    <link rel="stylesheet" href="styles/manager.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="Folderwise Bookmark Search">
+          <span class="brand-mark" aria-hidden="true">F</span>
+          <span>
+            <strong>Folderwise</strong>
+            <small>Bookmark Search</small>
+          </span>
+        </div>
+
+        <div class="search-panel" role="search">
+          <label class="search-box" for="searchInput">
+            <span aria-hidden="true">Search</span>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="Title, URL, or folder" />
+          </label>
+
+          <label class="sort-box" for="sortSelect">
+            <span>Sort</span>
+            <select id="sortSelect">
+              <option value="relevance">Relevance</option>
+              <option value="title">Title</option>
+              <option value="newest">Newest</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="sidebar" aria-label="Bookmark folders">
+          <div class="sidebar-head">
+            <h1>Folders</h1>
+            <span id="folderTotal">0</span>
+          </div>
+          <div class="folder-list" id="folderList"></div>
+        </aside>
+
+        <section class="content" aria-labelledby="resultsTitle">
+          <div class="toolbar">
+            <div class="mode-tabs" role="tablist" aria-label="Search mode">
+              <button class="mode-tab active" id="folderModeButton" type="button" role="tab" aria-selected="true">
+                Selected Folder
+              </button>
+              <button class="mode-tab" id="groupedModeButton" type="button" role="tab" aria-selected="false">
+                All Grouped
+              </button>
+            </div>
+
+            <label class="toggle-line">
+              <input id="includeChildrenInput" type="checkbox" checked />
+              <span>Include subfolders</span>
+            </label>
+
+            <div class="selection-actions" id="selectionActions" hidden>
+              <output id="selectionStatus">0 selected</output>
+              <button id="copyButton" type="button">Copy</button>
+              <button id="cutButton" type="button">Cut</button>
+              <button id="pasteButton" type="button" hidden>Paste</button>
+              <button id="deleteButton" type="button">Delete</button>
+            </div>
+          </div>
+
+          <div class="results-head">
+            <div>
+              <h2 id="resultsTitle">All bookmarks</h2>
+              <p id="resultsPath">All bookmarks</p>
+            </div>
+            <output id="resultCount" aria-live="polite">0 results</output>
+          </div>
+
+          <div class="results-grid" id="resultsGrid" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="folderButtonTemplate">
+      <button class="folder-button" type="button">
+        <span class="folder-name"></span>
+        <span class="folder-count"></span>
+      </button>
+    </template>
+
+    <script type="module" src="src/manager.js"></script>
+  </body>
+</html>
